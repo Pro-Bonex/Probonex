@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
-import { Shield, Info, Database, Share2, Lock, Clock, UserCheck, Cookie, AlertCircle, Mail } from "lucide-react";
+import { Shield, Info, Database, Share2, Lock, Clock, UserCheck, Cookie, AlertCircle, Mail, Settings, Eye } from "lucide-react";
 
 const PrivacyPolicy = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -74,7 +74,10 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-3">4. How We Use Your Information</h2>
+              <h2 className="text-2xl font-semibold mb-3 flex items-center gap-2">
+                <Settings className="h-6 w-6 text-primary" />
+                4. How We Use Your Information
+              </h2>
               <p>We use the information we collect to:</p>
               <ul className="list-disc pl-6 space-y-1">
                 <li>Provide and maintain the Pro Bonex platform</li>

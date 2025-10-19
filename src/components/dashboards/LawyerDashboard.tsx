@@ -271,20 +271,57 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Lawyer Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back, {profile.full_name}</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/10">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
+        {/* Enhanced Header */}
+        <div className="mb-12">
+          <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 shadow-lg">
+            <div className="flex items-center gap-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center">
+                <Scale className="w-10 h-10 text-primary" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-3xl font-bold text-foreground">
+                    Welcome back, {profile.full_name}
+                  </h1>
+                  <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                    <Scale className="w-3 h-3 mr-1" />
+                    Pro Bono Lawyer
+                  </Badge>
+                </div>
+                <p className="text-muted-foreground text-lg">
+                  Manage your pro bono cases and help those in need of justice
+                </p>
+                <div className="flex items-center gap-6 mt-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="w-4 h-4" />
+                    <span>{openCases.length} Active Cases</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-4 h-4" />
+                    <span>{pendingRequests.length} Pending Requests</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>{pastClients.length} Completed Cases</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       {/* Pending Requests */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
+      <Card className="mb-8 border-primary/10 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardTitle className="flex items-center gap-3 text-xl">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <FileText className="h-5 w-5 text-primary" />
+            </div>
             Incoming Case Requests
           </CardTitle>
-          <CardDescription>Review and respond to case requests</CardDescription>
+          <CardDescription className="text-base">Review and respond to case requests from victims seeking help</CardDescription>
         </CardHeader>
         <CardContent>
           {pendingRequests.length === 0 ? (
@@ -331,13 +368,15 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
       </Card>
 
       {/* Open Cases */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Briefcase className="h-5 w-5" />
+      <Card className="mb-8 border-primary/10 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardTitle className="flex items-center gap-3 text-xl">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Briefcase className="h-5 w-5 text-primary" />
+            </div>
             My Open Cases
           </CardTitle>
-          <CardDescription>Active cases you're working on</CardDescription>
+          <CardDescription className="text-base">Active cases you're currently working on</CardDescription>
         </CardHeader>
         <CardContent>
           {openCases.length === 0 ? (
@@ -478,6 +517,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      </div>
     </div>
   );
 };

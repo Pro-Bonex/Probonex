@@ -206,28 +206,59 @@ export const VictimDashboard = ({ profile }: VictimDashboardProps) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="mb-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">My Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back, {profile.full_name}</p>
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/10">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
+        {/* Enhanced Header */}
+        <div className="mb-12">
+          <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 shadow-lg">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center">
+                  <UserCircle className="w-10 h-10 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h1 className="text-3xl font-bold text-foreground">
+                      Welcome back, {profile.full_name}
+                    </h1>
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      <UserCircle className="w-3 h-3 mr-1" />
+                      Seeking Justice
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground text-lg">
+                    Manage your cases and connect with pro bono lawyers
+                  </p>
+                  <div className="flex items-center gap-6 mt-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <FileText className="w-4 h-4" />
+                      <span>{openCases.length} Open Cases</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4" />
+                      <span>{pastLawyers.length} Past Lawyers</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <Button onClick={() => setShowNewCase(true)} size="lg" className="px-6 h-12">
+                <Plus className="h-5 w-5 mr-2" />
+                New Case
+              </Button>
+            </div>
           </div>
-          <Button onClick={() => setShowNewCase(true)}>
-            <Plus className="h-4 w-4 mr-2" />
-            New Case
-          </Button>
         </div>
-      </div>
 
       {/* Open Cases */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
+      <Card className="mb-8 border-primary/10 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardTitle className="flex items-center gap-3 text-xl">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <FileText className="h-5 w-5 text-primary" />
+            </div>
             My Open Cases
           </CardTitle>
-          <CardDescription>Cases you're currently working on</CardDescription>
+          <CardDescription className="text-base">Cases you're currently working on with lawyers</CardDescription>
         </CardHeader>
         <CardContent>
           {openCases.length === 0 ? (
@@ -340,13 +371,15 @@ export const VictimDashboard = ({ profile }: VictimDashboardProps) => {
       </Card>
 
       {/* Past Lawyers */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5" />
+      <Card className="border-primary/10 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardTitle className="flex items-center gap-3 text-xl">
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Users className="h-5 w-5 text-primary" />
+            </div>
             Lawyers I've Worked With
           </CardTitle>
-          <CardDescription>Previous legal representatives</CardDescription>
+          <CardDescription className="text-base">Previous legal representatives who helped with your cases</CardDescription>
         </CardHeader>
         <CardContent>
           {pastLawyers.length === 0 ? (
@@ -415,6 +448,7 @@ export const VictimDashboard = ({ profile }: VictimDashboardProps) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
-import { FileText, AlertCircle, ListChecks, Scale, Shield, AlertTriangle, UserX, Copyright, XCircle, Gavel, FileSignature, Layers, Mail } from "lucide-react";
+import { FileText, AlertCircle, ListChecks, Scale, Shield, AlertTriangle, UserX, Copyright, XCircle, Gavel, FileSignature, Layers, Mail, Info, HandHeart, RefreshCw } from "lucide-react";
 
 const TermsOfService = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,7 +49,10 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-3">3. Description of Service</h2>
+              <h2 className="text-2xl font-semibold mb-3 flex items-center gap-2">
+                <Info className="h-6 w-6 text-primary" />
+                3. Description of Service
+              </h2>
               <p>
                 Pro Bonex is a platform that connects pro bono human rights lawyers with victims of human rights abuses. The Platform facilitates:
               </p>
@@ -157,7 +160,10 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-3">9. Indemnification</h2>
+              <h2 className="text-2xl font-semibold mb-3 flex items-center gap-2">
+                <HandHeart className="h-6 w-6 text-primary" />
+                9. Indemnification
+              </h2>
               <p>
                 You agree to indemnify, defend, and hold harmless Pro Bonex and its affiliates from any claims, damages, losses, liabilities, and expenses (including attorneys' fees) arising from:
               </p>
@@ -206,7 +212,10 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-3">13. Changes to Terms</h2>
+              <h2 className="text-2xl font-semibold mb-3 flex items-center gap-2">
+                <RefreshCw className="h-6 w-6 text-primary" />
+                13. Changes to Terms
+              </h2>
               <p>
                 We reserve the right to modify these Terms at any time. We will notify users of material changes by posting the updated Terms on the Platform. Your continued use after such changes constitutes acceptance of the modified Terms.
               </p>
