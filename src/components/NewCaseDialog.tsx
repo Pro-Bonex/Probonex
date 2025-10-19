@@ -1,0 +1,164 @@
+import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { StateDistrictSelect } from "./StateDistrictSelect";
+import { ConstitutionSelect } from "./ConstitutionSelect";
+import { UDHRSelect } from "./UDHRSelect";
+
+interface NewCaseDialogProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  victimId: string;
+  onCaseCreated: () => void;
+}
+
+export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: NewCaseDialogProps) => {
+  const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [state, setState] = useState("");
+  const [district, setDistrict] = useState("");
+  const [constitutionViolations, setConstitutionViolations] = useState<string[]>([]);
+  const [udhrViolations, setUdhrViolations] = useState<string[]>([]);
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!title || !description || !state || !district) {
+      toast({
+        variant: "destructive",
+        title: "Missing Information",
+        description: "Please fill in all required fields",
+      });
+      return;
+    }
+
+    if (constitutionViolations.length === 0 && udhrViolations.length === 0) {
+      toast({
+        variant: "destructive",
+        title: "Missing Violations",
+        description: "Please select at least one violation from Constitution or UDHR",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase
+        .from("cases")
+        .insert({
+          victim_id: victimId,
+          title,
+          description,
+          state,
+          congressional_district: district,
+          constitution_violations: constitutionViolations,
+          udhr_violations: udhrViolations,
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      toast({
+        title: "Case Created",
+        description: "Your case has been created. Now find lawyers to help.",
+      });
+
+      onCaseCreated();
+      onOpenChange(false);
+      
+      // Navigate to lawyer search
+      navigate(`/find-lawyers/${data.id}`);
+      
+      // Reset form
+      setTitle("");
+      setDescription("");
+      setState("");
+      setDistrict("");
+      setConstitutionViolations([]);
+      setUdhrViolations([]);
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "Could not create case",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle>Create New Case</DialogTitle>
+          <DialogDescription>
+            Provide details about your human rights case
+          </DialogDescription>
+        </DialogHeader>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="title">Case Title *</Label>
+            <Input
+              id="title"
+              placeholder="Brief title of your case"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="description">Description *</Label>
+            <Textarea
+              id="description"
+              placeholder="Describe what happened in detail..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={5}
+              required
+            />
+          </div>
+
+          <StateDistrictSelect
+            state={state}
+            district={district}
+            onStateChange={setState}
+            onDistrictChange={setDistrict}
+          />
+
+          <ConstitutionSelect
+            selected={constitutionViolations}
+            onChange={setConstitutionViolations}
+          />
+
+          <UDHRSelect
+            selected={udhrViolations}
+            onChange={setUdhrViolations}
+          />
+
+          <div className="flex gap-2 pt-4">
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)} className="flex-1">
+              Cancel
+            </Button>
+            <Button type="submit" disabled={loading} className="flex-1">
+              {loading ? "Creating..." : "Create Case"}
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
