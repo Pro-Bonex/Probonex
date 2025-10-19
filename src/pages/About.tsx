@@ -68,6 +68,7 @@ const About = () => {
                 </p>
                 <p>
                   The Congressional App Challenge recognizes that technology can be a powerful tool for social good, and Pro Bonex exemplifies this principle by using modern web technologies to connect those in need with those who can help.
+                  <br />
                   <a 
                       href="https://www.congressionalappchallenge.us/" 
                       className="inline-flex items-center gap-2 text-primary hover:underline"
