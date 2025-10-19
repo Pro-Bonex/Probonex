@@ -33,6 +33,9 @@ const TermsOfService = () => {
               <p>
                 By accessing and using Pro Bonex ("the Platform"), you accept and agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not use the Platform.
               </p>
+              <p className="mt-2">
+                <strong>About Pro Bonex:</strong> Pro Bonex is a student-led open source project created for the 2025 Congressional App Challenge by a student in the 5th Congressional District of New Jersey. The application is fully open source and available at: <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://github.com/Pro-Bonex/Probonex</a>
+              </p>
             </section>
 
             <section>
@@ -195,7 +198,7 @@ const TermsOfService = () => {
                 12. Governing Law and Dispute Resolution
               </h2>
               <p>
-                These Terms shall be governed by and construed in accordance with the laws of the United States and the State of [Your State], without regard to conflict of law principles.
+                These Terms shall be governed by and construed in accordance with the laws of the United States and the State of New Jersey, without regard to conflict of law principles.
               </p>
               <p className="mt-2">
                 Any disputes arising from these Terms or your use of the Platform shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.
@@ -235,7 +238,7 @@ const TermsOfService = () => {
                 16. Contact Information
               </h2>
               <p>
-                For questions about these Terms, please contact us at legal@probonex.com
+                Pro Bonex is a student-led open source project created for the 2025 Congressional App Challenge. If you have any questions or concerns about these Terms of Service, please reach out to us via the GitHub repository's "Issues" or "Discussions" tab at: <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://github.com/Pro-Bonex/Probonex</a>
               </p>
             </section>
           </CardContent>

@@ -11,9 +11,13 @@ export const Footer = () => {
               <img src={logo} alt="Pro Bonex" className="h-10 w-10" />
               <span className="text-xl font-bold text-primary">Pro Bonex</span>
             </div>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-muted-foreground max-w-md mb-4">
               Connecting pro bono human rights lawyers with victims who need legal assistance.
               Access to justice for all.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <strong>About Pro Bonex:</strong> A student-led open source project created for the 2025 Congressional App Challenge by a student in the 5th Congressional District of New Jersey. 
+              <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </p>
           </div>
           
@@ -28,8 +32,10 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Platform</h3>
             <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><Link to="/signup" className="hover:text-primary transition-colors">Sign Up</Link></li>
               <li><Link to="/login" className="hover:text-primary transition-colors">Login</Link></li>
+              <li><a href="https://github.com/Pro-Bonex/Probonex" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
           </div>
         </div>

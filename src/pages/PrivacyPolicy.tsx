@@ -33,6 +33,9 @@ const PrivacyPolicy = () => {
               <p>
                 Pro Bonex ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform to connect pro bono human rights lawyers with victims of human rights abuses.
               </p>
+              <p className="mt-2">
+                <strong>About Pro Bonex:</strong> Pro Bonex is a student-led open source project created for the 2025 Congressional App Challenge by a student in the 5th Congressional District of New Jersey. The application is fully open source and available at: <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://github.com/Pro-Bonex/Probonex</a>
+              </p>
             </section>
 
             <section>
@@ -157,7 +160,7 @@ const PrivacyPolicy = () => {
                 11. Contact Us
               </h2>
               <p>
-                If you have any questions about this Privacy Policy, please contact us at privacy@probonex.com
+                Pro Bonex is a student-led open source project created for the 2025 Congressional App Challenge. If you have any questions or concerns about this Privacy Policy, please reach out to us via the GitHub repository's "Issues" or "Discussions" tab at: <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://github.com/Pro-Bonex/Probonex</a>
               </p>
             </section>
           </CardContent>

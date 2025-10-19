@@ -32,6 +32,10 @@ const Index = () => {
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                   Connecting pro bono human rights lawyers with victims who need justice. Build your network, showcase your experience, and make a real difference.
                 </p>
+                <p className="text-sm text-muted-foreground mb-8">
+                  <strong>About Pro Bonex:</strong> A student-led open source project created for the 2025 Congressional App Challenge by a student in the 5th Congressional District of New Jersey. 
+                  <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                </p>
                 <div className="flex gap-4 flex-wrap">
                   {isAuthenticated ? (
                     <Button size="lg" onClick={() => navigate("/dashboard")} className="text-lg px-8 h-12">
@@ -254,6 +258,9 @@ const Index = () => {
             <Button size="lg" variant="secondary" onClick={() => navigate("/signup")} className="text-lg px-8 h-12">
               Sign up - it's free
             </Button>
+            <p className="text-sm mt-6 opacity-75">
+              Built by a student in the 5th Congressional District of New Jersey for the 2025 Congressional App Challenge
+            </p>
           </div>
         </section>
       </main>
