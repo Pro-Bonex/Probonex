@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer className="border-t bg-card mt-auto">
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Pro Bonex" className="h-10 w-10" />
@@ -32,10 +32,17 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Platform</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><Link to="/signup" className="hover:text-primary transition-colors">Sign Up</Link></li>
               <li><Link to="/login" className="hover:text-primary transition-colors">Login</Link></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold mb-3">Additional</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
               <li><a href="https://github.com/Pro-Bonex/Probonex" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://github.com/Pro-Bonex/Probonex/discussions" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
             </ul>
           </div>
         </div>
