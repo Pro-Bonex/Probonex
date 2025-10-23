@@ -6,19 +6,24 @@
 
 ## Table of Contents
 
-1. [Project Goal](#project-goal)
-2. [Tech Stack](#tech-stack)
-3. [License](#license)
-4. [File Structure](#file-structure)
-5. [Setup Instructions](#setup-instructions)
-
+1. [README Guidelines](#readme-guidelines)
+2. [Project Goal](#project-goal)
+3. [Tech Stack](#tech-stack)
+4. [License](#license)
+5. [File Structure](#file-structure)
+6. [Setup Instructions](#setup-instructions)
    * [Environment Variables](#environment-variables)
    * [Supabase Setup](#supabase-setup)
    * [Run Migrations](#run-migrations)
-6. [Quick Start](#quick-start)
-7. [Development](#development)
-8. [Contribution Guidelines](#contribution-guidelines)
-9. [Additional Notes](#additional-notes)
+7. [Quick Start](#quick-start)
+8. [Development](#development)
+9. [Contribution Guidelines](#contribution-guidelines)
+10. [Additional Notes](#additional-notes)
+
+---
+
+## README GUIDELINES - IMPORTANT
+- ***ENSURE YOU DO NOT EDIT ANY README.MD FILES ANYWHERE IN THE REPOSITORY, ESPECIALLY UNDER THESE SUBDIRECTORIES. IF ONE IS FOUND DOING SO, THE REPOSITORY WILL BE SHUT DOWN FOR A CERTAIN PERIOD. THAT PERSON WILL BE REPORTED TO GitHub, AND I.P. BANNED FROM VIEWING OR EDITING THE REPO.*** -
 
 ---
 
@@ -49,7 +54,9 @@ Probonex uses a modern full-stack TypeScript environment:
 
 ---
 
-## License
+## Contribution and Licensing (effective CONTRIBUTING.MD)
+
+### License
 
 Probonex is licensed under a **modified Apache 2.0 License**:
 
@@ -58,6 +65,19 @@ Probonex is licensed under a **modified Apache 2.0 License**:
 * Full Apache 2.0 protections for copyright, patents, and liability
 
 See the [LICENSE](./LICENSE) file for details.
+
+### Contribution Guidelines
+* All logos, trademarks, and **base matching algorithms** are to be unmodified. Modification will result in the potential removal of modification access to the repository.
+* Sub-Directory Guidelines are referenced in certain directories. These guidelines are located in the sub-directories' README files.MD file (all subdirectories with such cases are listed below). If any sub-directory-specific guideline is to be broken, the user will potentially lose modification access to the repository.
+
+### Sub-Directories with Guidelines
+Note: Ensure you check the README.md Files for more comprehensive guidelines. We will assume that you have read and agreed to those MD files if you commit any changes in those folders. ENSURE YOU DO NOT EDIT ANY README.MD FILES ANYWHERE IN THE REPOSITORY, ESPECIALLY UNDER THESE SUBDIRECTORIES. IF ONE IS FOUND DOING SO, THE REPOSITORY WILL BE SHUT DOWN FOR A CERTAIN PERIOD. THAT PERSON WILL BE REPORTED TO GitHub, AND I.P. BANNED FROM VIEWING OR EDITING THE REPO.
+
+* "src/assets" - Do Not Modify Logos and Trademarks
+* "public/" - Do not Modify Logos, Trademarks, or Robots' Access
+* "src/components/ui" - Do not modify UI Libraries
+* "src/components/hooks" - Do not modify Mobile or Toast UI unless specifically permitted by Repository Administrators
+* "supabase/migrations" - Do not modify existing files. Only add new migrations. Ensure all migrations work
 
 ---
 
