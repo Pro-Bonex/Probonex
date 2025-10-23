@@ -69,8 +69,12 @@ Apache License
       (c) You may not modify the base matching algorithm that identifies
           lawyers with at least one similar human rights violation in the
           same congressional district; new functionality or adjustments
-          can be added on top but the base algorithm must remain intact;
-      (d) You must clearly indicate in any derivative work the nature and
+          can be added on top, but the base algorithm must remain intact;
+      (d) For folders with a sub README.MD files, you are required to
+          abide by the contribution guidelines built into the README.md
+          Syntax. All Sub-Readme files are noted and listed in the root
+          README File (/README.md)
+      (e) You must clearly indicate in any derivative work the nature and
           scope of modifications made on top of the base Work.
 
    3. Grant of Patent License. Subject to the terms and conditions of
