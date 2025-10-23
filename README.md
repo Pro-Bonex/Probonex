@@ -40,7 +40,7 @@ The goal of Probonex is to provide an **efficient, transparent, and accessible p
 Probonex uses a modern full-stack TypeScript environment:
 
 * **Frontend:** React 18, Vite, TailwindCSS
-* **UI Components:** Radix UI, Lucide React, Sonner
+* **UI Components:** Radix UI, Lucide React, Sonner *(Note: UI is stored in "src/components/ui". READ THE README.md FILE IN UI FOLDER BEFORE EDITING UI COMPONENTS)*
 * **State Management & Hooks:** React Query, Custom Hooks
 * **Form Validation:** React Hook Form, Zod
 * **Database / Backend:** Supabase (Auth, Database, Storage)
