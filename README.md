@@ -78,6 +78,7 @@ Note: Ensure you check the README.md Files for more comprehensive guidelines. We
 * "src/components/ui" - Do not modify UI Libraries
 * "src/components/hooks" - Do not modify Mobile or Toast UI unless specifically permitted by Repository Administrators
 * "supabase/migrations" - Do not modify existing files. Only add new migrations. Ensure all migrations work
+* "src/integrations/supabase" - Do not modify these files unless necessary to facilitate changes in Migrations. Guidelines for migrations apply here (except for creating new files)
 
 ---
 
