@@ -1,16 +1,22 @@
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 
+// Important Right-Based Amendments from the U.S. Constitution
 const CONSTITUTION_ARTICLES = [
-  "1st Amendment - Freedom of Speech, Religion, Press",
-  "4th Amendment - Search and Seizure",
+  "1st Amendment - Freedom of Speech, Press, and Religion",
+  "2nd Amendment - Right to Bear Arms",
+  "3rd Amendment - Protection Against Quartering of Soldiers",
+  "4th Amendment - Protection Against Forced Search and Seizure",
   "5th Amendment - Due Process, Self-Incrimination",
   "6th Amendment - Right to Fair Trial",
-  "8th Amendment - Cruel and Unusual Punishment",
-  "13th Amendment - Abolition of Slavery",
+  "7th Amendment - Right to Jury Trial",
+  "8th Amendment - Protection Against Cruel and Unusual Punishment",
+  "9th Amendment - Rights Not Specifically Enumerated",
+  "13th Amendment - Protection Against Slavery",
   "14th Amendment - Equal Protection, Due Process",
   "15th Amendment - Voting Rights (Race)",
   "19th Amendment - Voting Rights (Gender)",
+  "26th Amendment - Voting Rights (Age)",
 ];
 
 interface ConstitutionSelectProps {
@@ -18,6 +24,7 @@ interface ConstitutionSelectProps {
   onChange: (selected: string[]) => void;
 }
 
+// Rights Toggling
 export const ConstitutionSelect = ({ selected, onChange }: ConstitutionSelectProps) => {
   const handleToggle = (article: string) => {
     if (selected.includes(article)) {
@@ -26,7 +33,8 @@ export const ConstitutionSelect = ({ selected, onChange }: ConstitutionSelectPro
       onChange([...selected, article]);
     }
   };
-
+  
+  // Select Options Rendering
   return (
     <div className="space-y-2">
       <Label>U.S. Constitution Violations (select all that apply)</Label>

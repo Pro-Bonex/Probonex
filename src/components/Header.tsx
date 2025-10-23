@@ -20,6 +20,7 @@ export const Header = ({ isAuthenticated = false }: { isAuthenticated?: boolean 
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  // Check for Dashboard or Signup/Login Buttons
   useEffect(() => {
     if (!isAuthenticated) return;
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -37,6 +38,7 @@ export const Header = ({ isAuthenticated = false }: { isAuthenticated?: boolean 
     });
   }, [isAuthenticated]);
 
+  // Logout Handler from Avatar Dropdown
   const handleLogout = async () => {
     await supabase.auth.signOut();
     toast({ title: "Logged out", description: "You have been successfully logged out." });
@@ -51,6 +53,7 @@ export const Header = ({ isAuthenticated = false }: { isAuthenticated?: boolean 
           <span className="text-2xl font-bold text-primary">Pro Bonex</span>
         </Link>
         
+        {/* Avatar Applicable Dropdown */}
         <nav className="flex items-center gap-4">
           {isAuthenticated ? (
             <DropdownMenu>
@@ -82,6 +85,7 @@ export const Header = ({ isAuthenticated = false }: { isAuthenticated?: boolean 
             </DropdownMenu>
           ) : (
             <>
+            {/* Login/Signup Buttons if Applicable */}
               <Link to="/login">
                 <Button variant="ghost">Login</Button>
               </Link>

@@ -15,12 +15,15 @@ export const Footer = () => {
               Connecting pro bono human rights lawyers with victims who need legal assistance.
               Access to justice for all.
             </p>
+
+            {/* About Section */}
             <p className="text-sm text-muted-foreground">
               <strong>About Pro Bonex:</strong> A student-led open source project created for the 2025 Congressional App Challenge by a student in the 5th Congressional District of New Jersey. 
               <a href="https://github.com/Pro-Bonex/Probonex" className="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </p>
           </div>
           
+          {/* Policies Section - Legal Stuff */}
           <div>
             <h3 className="font-semibold mb-3">Legal</h3>
             <ul className="space-y-2 text-muted-foreground">
@@ -29,6 +32,7 @@ export const Footer = () => {
             </ul>
           </div>
           
+          {/* Sign Up and Login Links */}
           <div>
             <h3 className="font-semibold mb-3">Platform</h3>
             <ul className="space-y-2 text-muted-foreground">
@@ -37,6 +41,7 @@ export const Footer = () => {
             </ul>
           </div>
           
+          {/* About Page and Github Links */}
           <div>
             <h3 className="font-semibold mb-3">Additional</h3>
             <ul className="space-y-2 text-muted-foreground">
@@ -47,8 +52,9 @@ export const Footer = () => {
           </div>
         </div>
         
+        {/* Dynamic Copyright Info - Applicable via Apache 2.0 */}
         <div className="mt-8 pt-8 border-t text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Pro Bonex. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Pro Bonex. All rights reserved (Source Code and Site). Applicable via <a href="https://github.com/Pro-Bonex/Probonex/blob/main/LICENSE" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">Apache 2.0 License.</a></p>
         </div>
       </div>
     </footer>

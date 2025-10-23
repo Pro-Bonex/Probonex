@@ -1,12 +1,13 @@
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+// States and congressional Districts Data. Source: U.S. Census Bureau 10/22/2025 - DISTRICTS WILL EVENTUALLY CHANGE!
 const US_STATES = [
   { code: "AL", name: "Alabama", districts: 7 },
   { code: "AK", name: "Alaska", districts: 1 },
   { code: "AZ", name: "Arizona", districts: 9 },
   { code: "AR", name: "Arkansas", districts: 4 },
-  { code: "CA", name: "California", districts: 52 },
+  { code: "CA", name: "California", districts: 52 }, // The most :)
   { code: "CO", name: "Colorado", districts: 8 },
   { code: "CT", name: "Connecticut", districts: 5 },
   { code: "DE", name: "Delaware", districts: 1 },
@@ -31,7 +32,7 @@ const US_STATES = [
   { code: "NE", name: "Nebraska", districts: 3 },
   { code: "NV", name: "Nevada", districts: 4 },
   { code: "NH", name: "New Hampshire", districts: 2 },
-  { code: "NJ", name: "New Jersey", districts: 12 },
+  { code: "NJ", name: "New Jersey", districts: 12 }, // New Jersey!
   { code: "NM", name: "New Mexico", districts: 3 },
   { code: "NY", name: "New York", districts: 26 },
   { code: "NC", name: "North Carolina", districts: 14 },
@@ -71,6 +72,7 @@ export const StateDistrictSelect = ({ state, district, onStateChange, onDistrict
   };
 
   return (
+    // For selection of state and congressional district
     <div className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="state">State *</Label>
@@ -87,7 +89,8 @@ export const StateDistrictSelect = ({ state, district, onStateChange, onDistrict
           </SelectContent>
         </Select>
       </div>
-
+      
+      {/* Logic for Congressional District Array - Takes number and innumerates options */}
       {state && (
         <div className="space-y-2">
           <Label htmlFor="district">Congressional District *</Label>

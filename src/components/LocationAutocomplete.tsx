@@ -14,6 +14,7 @@ interface LocationAutocompleteProps {
   onStateChange: (state: string) => void;
 }
 
+{/* Define Possible States */}
 const US_STATES = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
   "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
@@ -25,11 +26,13 @@ const US_STATES = [
 ];
 
 export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange }: LocationAutocompleteProps) => {
+  // Left Loader - Pre-code
   const [stateOpen, setStateOpen] = useState(false);
   const [cities, setCities] = useState<string[]>([]);
   const [cityOpen, setCityOpen] = useState(false);
   const [loadingCities, setLoadingCities] = useState(false);
 
+  // Fetch Cities Function using CountriesNow API - UNUSED IN ACTUAL IMPLEMENTATION 10/22/2025
   useEffect(() => {
     const fetchCities = async () => {
       if (!state) {
@@ -70,6 +73,7 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="space-y-2">
+        {/* State Dropdown */}
         <Label>State *</Label>
         <Popover open={stateOpen} onOpenChange={setStateOpen}>
           <PopoverTrigger asChild>
@@ -83,6 +87,8 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
+          
+          {/* Text Applicable - Only with user typing */}
           <PopoverContent className="w-full p-0">
             <Command>
               <CommandInput placeholder="Search state..." />
@@ -96,7 +102,7 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
                       onSelect={(currentValue) => {
                         onStateChange(currentValue === state ? "" : currentValue);
                         onCityChange(""); // Reset city when state changes
-                        setStateOpen(false);
+                        setStateOpen(false); // Reset "State" active select state
                       }}
                     >
                       <Check
@@ -114,6 +120,8 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
           </PopoverContent>
         </Popover>
       </div>
+      
+      {/* Selection City Trigger - UNUSED 10/22/2025 */}
       <div className="space-y-2">
         <Label>City *</Label>
         {!state ? (
@@ -145,6 +153,8 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
                 <CommandList>
                   <CommandEmpty>No city found.</CommandEmpty>
                   <CommandGroup>
+
+                    {/* Mapping Commands */}
                     {cities.map((cityName) => (
                       <CommandItem
                         key={cityName}
@@ -169,6 +179,7 @@ export const LocationAutocomplete = ({ city, state, onCityChange, onStateChange 
             </PopoverContent>
           </Popover>
         ) : (
+          // Fallover Method - Simple Input (USED AS CITY PERCISION DOESNT IMPACT APP FUNCTIONALITY 10/22/2025)
           <Input
             placeholder="Enter city name"
             value={city}

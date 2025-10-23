@@ -1,3 +1,5 @@
+// Note: This code is PROTECTED. This is restricted from Commit Editing as of 10/23/2025. Although Not Included in License, Please only change if new Toast Alert UI is ABSOLUTELY NECESSARY!!!
+
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";

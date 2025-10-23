@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Mail, Phone } from "lucide-react";
 
+// Sample Blank Props Interface
 interface ContactInfoModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -15,6 +16,7 @@ interface ContactInfoModalProps {
   lawyerName: string;
 }
 
+// Fixed UI Contact Info Modal - LINK WITH DATABASE TODO
 export const ContactInfoModal = ({ open, onOpenChange, email, phone, lawyerName }: ContactInfoModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

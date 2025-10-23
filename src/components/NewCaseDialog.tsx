@@ -33,6 +33,7 @@ export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: N
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Distructive Fields - Required
     if (!title || !description || !state || !district) {
       toast({
         variant: "destructive",
@@ -42,6 +43,7 @@ export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: N
       return;
     }
 
+    // Violations missing - No Case exists  without an actual human rights violation!
     if (constitutionViolations.length === 0 && udhrViolations.length === 0) {
       toast({
         variant: "destructive",
@@ -78,10 +80,10 @@ export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: N
       onCaseCreated();
       onOpenChange(false);
       
-      // Navigate to lawyer search
+      // Go to Lawyer Matching Page
       navigate(`/find-lawyers/${data.id}`);
       
-      // Reset form
+      // Reset form active states - Reset All Fields
       setTitle("");
       setDescription("");
       setState("");
@@ -106,6 +108,7 @@ export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: N
           <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto">
             <FileText className="h-6 w-6 text-primary" />
           </div>
+          {/* Case Creation - Questionare */}
           <DialogTitle className="text-2xl font-bold">Create New Case</DialogTitle>
           <DialogDescription className="text-base">
             Provide details about your human rights case to connect with pro bono lawyers
@@ -209,7 +212,7 @@ export const NewCaseDialog = ({ open, onOpenChange, victimId, onCaseCreated }: N
           <div className="text-center pt-4 border-t border-primary/10">
             <div className="inline-flex items-center gap-2 text-xs text-primary/60">
               <Code className="w-3 h-3" />
-              <span>Built with ❤️ by a student developer</span>
+              <span>Built with ❤️ by a student developer</span> {/* Student Creds :) */}
               <Sparkles className="w-3 h-3 animate-pulse" />
             </div>
           </div>

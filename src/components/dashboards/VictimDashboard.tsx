@@ -1,3 +1,5 @@
+// NOTE: REFER TO LAWYER DASHBOARD FOR MORE COMMENTS ON LOGIC, AND STRUCTURE. BOTH DASHBOARDS ARE SIMILAR APART FROM THEIR UI COMPONENTS.
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";

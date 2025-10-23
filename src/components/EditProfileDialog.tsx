@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User, MapPin, Phone, Mail, Globe, Sparkles, Code, Edit } from "lucide-react";
 
+// Props!
 interface EditProfileDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -16,6 +17,7 @@ interface EditProfileDialogProps {
 }
 
 export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdated }: EditProfileDialogProps) => {
+  // Get Profile Info - From DB
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
   const [city, setCity] = useState("");
@@ -27,6 +29,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
   const [bio, setBio] = useState("");
   const { toast } = useToast();
 
+  // Blank form on open fields
   useEffect(() => {
     if (profile) {
       setFullName(profile.full_name || "");
@@ -43,6 +46,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // If Blank, These will be Distructive; Can't be left blank!
     if (!fullName || !city || !state) {
       toast({
         variant: "destructive",
@@ -52,6 +56,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
       return;
     }
 
+    // Lawyer Specific Required Fields
     if (profile.role === "lawyer" && bio && (bio.length < 50 || bio.length > 300)) {
       toast({
         variant: "destructive",
@@ -63,6 +68,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
 
     setLoading(true);
 
+    // Error Detection
     try {
       const { error } = await supabase
         .from("profiles")
@@ -80,6 +86,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
 
       if (error) throw error;
 
+      // Success Return Option
       toast({
         title: "Profile Updated",
         description: "Your profile has been successfully updated",
@@ -98,6 +105,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
     }
   };
 
+  // Base Screen Dialouge
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-card/95 backdrop-blur-sm border-primary/20">
@@ -166,7 +174,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
             </div>
           </div>
 
-          {/* Contact Information (Lawyers only) */}
+          {/* Contact Information (Applicable to Lawyers only) */}
           {profile?.role === "lawyer" && (
             <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
@@ -214,7 +222,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
             </div>
           )}
 
-          {/* Bio (Lawyers only) */}
+          {/* Bio (For Lawyers only) */}
           {profile?.role === "lawyer" && (
             <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
@@ -266,7 +274,7 @@ export const EditProfileDialog = ({ open, onOpenChange, profile, onProfileUpdate
             </Button>
           </div>
 
-          {/* Developer appreciation */}
+          {/* Developer appreciation - Just cuz! */}
           <div className="text-center pt-4 border-t border-primary/10">
             <div className="inline-flex items-center gap-2 text-xs text-primary/60">
               <Code className="w-3 h-3" />

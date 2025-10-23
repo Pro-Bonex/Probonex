@@ -23,6 +23,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+// Main Dashboard Interface for Lawyer - Accessable via direct page route or Avatar Link!
 interface LawyerDashboardProps {
   profile: any;
 }
@@ -39,7 +40,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
   }, [profile.id]);
 
   const loadDashboardData = async () => {
-    // Load pending requests
+    // Load pending requests -  Use a Supabase Direct API
     const { data: requests } = await supabase
       .from("case_requests")
       .select(`
@@ -54,7 +55,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
 
     setPendingRequests(requests || []);
 
-    // Load open and pending_closure cases
+    // Load open and pending_closure cases -  Use a Supabase Direct API (NOTE: FIX PENDING CLOSURE LOGIC 10/22/2025)
     const { data: cases } = await supabase
       .from("cases")
       .select(`
@@ -66,7 +67,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
 
     setOpenCases(cases || []);
 
-    // Load successfully closed cases
+    // Load successfully closed cases - Use a Supabase Direct API (NOTE: FIX CLOSED CASE LOADING LOGIC 10/22/2025)
     const { data: closed } = await supabase
       .from("cases")
       .select(`
@@ -81,7 +82,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
 
   const handleRequest = async (requestId: string, caseId: string, accept: boolean) => {
     if (accept) {
-      // Use the secure function to handle case acceptance
+      // Use the secure function to handle case acceptance - Supabase Semi-Direct API
       const { data, error } = await supabase.rpc('accept_case_request', {
         _request_id: requestId,
         _case_id: caseId,
@@ -90,6 +91,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
 
       const result = data as { success: boolean; error?: string } | null;
 
+      // Do not let execution of error (No Case Acception Validated)
       if (error || !result?.success) {
         toast({
           variant: "destructive",
@@ -99,17 +101,19 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
         return;
       }
 
+      // If No error - Case is successfully Processed by Lawyer
       toast({
         title: "Case Accepted",
         description: "You can now view the case details",
       });
     } else {
-      // Decline the request
+      // Decline the request On Rejection
       const { error } = await supabase
         .from("case_requests")
         .update({ status: "rejected" })
         .eq("id", requestId);
 
+        // Distructive if Decline Fails
       if (error) {
         toast({
           variant: "destructive",
@@ -119,15 +123,18 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
         return;
       }
 
+      // Supabase User Toast on Successful Decline - After Database Path
       toast({
         title: "Request Declined",
         description: "Request has been declined",
       });
     }
     
+    // Reload Data After Decline/Acceptance
     loadDashboardData();
   };
 
+  // Closed Successfully (NEEDS NEW LOGIC, PLEASE IMPLEMENT. Note, All New Logic Notes in this file are from 10/22/2025)
   const handleInitiateSuccessfulClosure = async (caseId: string) => {
     const { error } = await supabase
       .from("cases")
@@ -154,7 +161,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
 
   const handleRespondToSuccessfulClosure = async (caseId: string, accept: boolean, victimId: string) => {
     if (accept) {
-      // Both parties agree - mark as successfully closed and increment count
+      // Marked As Increment (FIX Both Closure LOGIC 10/22/2025)
       const { error: caseError } = await supabase
         .from("cases")
         .update({ 
@@ -172,13 +179,15 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
         return;
       }
 
-      // Increment success count for both lawyer and victim
+      // Increment success count for both lawyer and victim (Test Increment Functionality 10/22/2025 - Needs Closure Logic!)
       const { data: lawyerProfile } = await supabase
         .from("profiles")
         .select("successfully_closed_count")
         .eq("id", profile.id)
         .single();
 
+
+        // All below is successful Closed Increment. Above Block is Lawyer Specific. Directly below is Victim Specific
       const { data: victimProfile } = await supabase
         .from("profiles")
         .select("successfully_closed_count")
@@ -200,7 +209,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
         description: "Both parties confirmed successful case resolution",
       });
     } else {
-      // Rejected - revert to open status
+      // Revert to open status (Note, Increment Functionality broken due to non existant accept/reject logic for closed cases 10/23/2025)
       const { error } = await supabase
         .from("cases")
         .update({ 
@@ -226,7 +235,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
     
     loadDashboardData();
   };
-
+   // Regular Initiated Closes and Deletions (NOTEE: Deletions don't process and check Note on 10.23.2025 Line 212 for info on Closing. 10/23/2025)
   const handleRegularClose = async (caseId: string) => {
     const { error } = await supabase
       .from("cases")
@@ -501,6 +510,7 @@ export const LawyerDashboard = ({ profile }: LawyerDashboardProps) => {
         </CardContent>
       </Card>
 
+          {/* Alert Processer for Errors + Alerts. React Based */}
       <AlertDialog open={!!caseToDelete} onOpenChange={() => setCaseToDelete(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>

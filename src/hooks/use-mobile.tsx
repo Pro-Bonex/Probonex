@@ -1,3 +1,4 @@
+// Simple Mobile and other small screen resizing. DO NOT CHANGE UNLESS OVERALL UI COMPONENT IS UPDATED. SHOULD BE UPDATED WITH TOAST FILE!
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
