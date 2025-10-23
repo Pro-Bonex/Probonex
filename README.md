@@ -6,18 +6,19 @@
 
 ## Table of Contents
 
-1. [README Guidelines](#readme-guidelines)
+1. [README Guidelines](#readme-guidelines---important)
 2. [Project Goal](#project-goal)
 3. [Tech Stack](#tech-stack)
-4. [License](#license)
-5. [File Structure](#file-structure)
+4. [Contribution and Licensing](#Contribution-and-Licensing-(effective-contributing.-md))
+   * [License](#license)
+   * [Contribution Guidelines](#contribution-guidelines)
+   * [Sub-Directories with Guidelines](#sub-directories-with-guidelines)
 6. [Setup Instructions](#setup-instructions)
    * [Environment Variables](#environment-variables)
    * [Supabase Setup](#supabase-setup)
    * [Run Migrations](#run-migrations)
 7. [Quick Start](#quick-start)
 8. [Development](#development)
-9. [Contribution Guidelines](#contribution-guidelines)
 10. [Additional Notes](#additional-notes)
 
 ---
@@ -143,15 +144,6 @@ npm run build
 * Follow React and TypeScript best practices.
 * Components are modular and can be extended without modifying the core algorithm.
 * Use `src/hooks/` for custom hooks and `src/lib/utils.ts` for utility functions.
-
----
-
-## Contribution Guidelines
-
-* Contributions are welcome!
-* Respect the **branding** and **base algorithm** rules.
-* Include **clear notes** about modifications in any derivative work.
-* Follow standard GitHub pull request protocols.
 
 ---
 
